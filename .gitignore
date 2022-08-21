@@ -3,4 +3,7 @@ biblioteca/
 cine/
 museos/
 .venv
+.env
 memorandum.txt
+probando.py
+sqlconexion_db.py
