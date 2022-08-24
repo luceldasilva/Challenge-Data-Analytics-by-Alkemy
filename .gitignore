@@ -4,6 +4,7 @@ cine/
 museos/
 .venv
 .env
+.log
 memorandum.txt
 probando.py
 sqlconexion_db.py
