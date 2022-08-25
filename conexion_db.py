@@ -6,8 +6,7 @@ import pandas as pd
 logging.basicConfig(
     format = '%(asctime)-5s %(name)-15s %(levelname)-8s %(message)s', 
     level=logging.DEBUG, 
-    filename='alkemy.log', 
-    filemode='w', 
+    filename='alkemy.log',  
     encoding="utf-8"
     )
 
