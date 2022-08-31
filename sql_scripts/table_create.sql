@@ -1,4 +1,4 @@
-SET CLIENT_ENCODING TO 'UTF8';
+-- SET CLIENT_ENCODING TO 'UTF8';
 
 create table alkemy (
 	id SERIAL PRIMARY KEY,
@@ -23,17 +23,3 @@ set datestyle to 'European';
 -- insert into alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, teléfono, mail, web)
 -- 	values
 -- 		();
-
-
--- cod_localidad
--- id_provincia
--- id_departamento
--- categoría
--- provincia
--- localidad
--- nombre
--- domicilio
--- código postal
--- número de teléfono
--- mail
--- web
