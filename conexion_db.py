@@ -11,8 +11,6 @@ logging.basicConfig(
     encoding="utf-8"
     )
 
-PATH_TO_FILE = './/sql_scripts//table_create.sql'
-
 files = glob.glob('.//**//**//' + '*.csv')
 # # print(files)
 # for f in files:
@@ -32,13 +30,13 @@ try:
     cursor.execute("SELECT version()")
     row = cursor.fetchone()
     logging.info("Versión del servidor de PostgreSQL: {}".format(row))
-    with open(PATH_TO_FILE, 'r', encoding='utf-8') as myfile:
+    with open('.//sql_scripts//table_create.sql', 'r', encoding='utf-8') as myfile:
         data = myfile.read()
         cursor.execute(data)
-    cursor.execute("SELECT * FROM alkemy")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+    # cursor.execute("SELECT * FROM alkemy")
+    # rows = cursor.fetchall()
+    # for row in rows:
+    #     print(row)
 
 except Exception as ex:
     logging.error("Error durante la conexión: {}".format(ex))

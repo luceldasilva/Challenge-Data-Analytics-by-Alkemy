@@ -1,5 +1,4 @@
 venv/
-sql_scripts/
 biblioteca/
 cine/
 museos/
@@ -7,5 +6,3 @@ museos/
 .env
 .log
 memorandum.txt
-probando.py
-sqlconexion_db.py

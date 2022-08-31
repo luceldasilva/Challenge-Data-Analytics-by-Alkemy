@@ -38,7 +38,7 @@ def downloads(file_link, art_venue):
 def run():
     logging.info('Descargando archivos')
     downloads(config('museo_link'), 'museos')
-    # downloads(config('cine_link'), 'cine')
+    downloads(config('cine_link'), 'cine')
     downloads(config('biblioteca_link'), 'biblioteca')
 
 if __name__ == '__main__':
