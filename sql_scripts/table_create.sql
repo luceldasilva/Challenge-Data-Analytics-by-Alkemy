@@ -1,4 +1,4 @@
--- SET CLIENT_ENCODING TO 'UTF8';
+SET CLIENT_ENCODING TO 'UTF8';
 
 create table alkemy (
 	id SERIAL PRIMARY KEY,
