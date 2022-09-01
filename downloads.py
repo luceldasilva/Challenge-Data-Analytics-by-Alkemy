@@ -26,8 +26,8 @@ def downloads(file_link, art_venue):
     directory = f'{str(art_venue)}//{str(mes)}'
     with req.get(str(file_link)) as rq:
         chdir(str(casa))
-        if isdir(directory) == True:
-            rmtree(directory)
+        if isdir(str(art_venue)) == True:
+            rmtree(str(art_venue))
         makedirs(directory)
         chdir(directory)
         with open(f'{str(art_venue)}-{str(today)}.csv', 'wb') as file:

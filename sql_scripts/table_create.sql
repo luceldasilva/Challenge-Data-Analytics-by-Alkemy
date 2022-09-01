@@ -1,5 +1,7 @@
 SET CLIENT_ENCODING TO 'UTF8';
 
+DROP TABLE IF EXISTS alkemy;
+
 create table alkemy (
 	id SERIAL PRIMARY KEY,
 	cod_localidad int not null,
@@ -19,7 +21,3 @@ create table alkemy (
 ALTER TABLE alkemy ADD COLUMN created_at TIMESTAMP DEFAULT NOW();
 
 set datestyle to 'European';
-
--- insert into alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, teléfono, mail, web)
--- 	values
--- 		();
