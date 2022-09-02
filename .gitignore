@@ -1,7 +1,5 @@
+data/
 venv/
-biblioteca/
-cine/
-museos/
 .venv
 .env
 .log
