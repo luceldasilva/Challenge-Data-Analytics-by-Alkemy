@@ -13,6 +13,7 @@ create table alkemy (
 	nombre varchar(255),
 	domicilio varchar(255),
 	código_postal varchar(255),
+	codigo_tel varchar(255),
 	teléfono varchar(255),
 	mail varchar(255),
 	web varchar(255)
