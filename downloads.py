@@ -2,13 +2,12 @@
 from decouple import config
 from datetime import datetime
 import logging
-from os import makedirs
-from os import chdir
+import os
 from os.path import isdir
 from shutil import rmtree
+import pyprojroot
 import requests as req
 
-casa = config('my_base') #configurar directorio actual en .env
 now = datetime.now()
 mes = now.strftime('%Y-%B')
 today = now.strftime('%d-%m-%Y')
@@ -22,21 +21,30 @@ logging.basicConfig(
     )
 
 
+def create_data():
+    if isdir('data') == False:
+        os.mkdir('data')
+        logging.info('carpeta creada')
+    else:
+        logging.info('carpeta disponible')
+
+
 def downloads(file_link, art_venue):
-    directory = f'{str(art_venue)}//{str(mes)}'
+    logging.info(f'Descargando {art_venue}')
+    CURRENT_DIR = pyprojroot.here('data')
+    os.chdir(str(CURRENT_DIR))
     with req.get(str(file_link)) as rq:
-        chdir(str(casa))
         if isdir(str(art_venue)) == True:
             rmtree(str(art_venue))
-        makedirs(directory)
-        chdir(directory)
+        os.makedirs(os.path.join(CURRENT_DIR, str(art_venue), str(mes)))
+        os.chdir(os.path.join(CURRENT_DIR, str(art_venue), str(mes)))
         with open(f'{str(art_venue)}-{str(today)}.csv', 'wb') as file:
             file.write(rq.content)
             logging.info(f'categoría {art_venue} descargada')
 
 
 def run():
-    logging.info('Descargando archivos')
+    create_data()
     downloads(config('museo_link'), 'museos')
     downloads(config('cine_link'), 'cine')
     downloads(config('biblioteca_link'), 'biblioteca')

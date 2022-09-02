@@ -1,5 +1,7 @@
 import logging
-import glob
+from os.path import abspath
+from pathlib import Path
+import pyprojroot
 from decouple import config
 from sqlalchemy import create_engine as ce
 import numpy as np
@@ -13,17 +15,20 @@ logging.basicConfig(
     )
 
 def insert_into():
-    sql = "INSERT INTO alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, teléfono, mail, web) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    files = glob.glob('.//**//**//' + '*.csv')
+    sql = '''INSERT INTO alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, teléfono, mail, web)
+            VALUES 
+                (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
+    CURRENT_DIR = pyprojroot.here('data')
+    files = Path(str(CURRENT_DIR)).glob("**/*.csv")
     for f in files:
         logging.info(f)
         data = pd.read_csv(f,header = 0, sep = ',')
         if 'Departamento' in data.columns:
-            data.drop(['Departamento'], axis=1)
+            data = data.drop(['Departamento'], axis=1)
         if 'Subcategoria' in data.columns:
-            data.drop(['Subcategoria'], axis=1)
+            data = data.drop(['Subcategoria'], axis=1)
         if 'subcategoria' in data.columns:
-            data.drop(['subcategoria'], axis=1)
+            data = data.drop(['subcategoria'], axis=1)
         data = data.rename(columns={data.columns[0]: 'cod_localidad', 
                                     data.columns[1]: 'id_provincia',
                                     data.columns[2]: 'id_departamento',
@@ -55,7 +60,7 @@ try:
     cursor.execute("SELECT version()")
     row = cursor.fetchone()
     logging.info("Versión del servidor de PostgreSQL: {}".format(row))
-    with open('.//sql_scripts//table_create.sql', 'r', encoding='utf-8') as myfile:
+    with open(str(abspath('table_create.sql')), 'r', encoding='utf-8') as myfile:
         df = myfile.read()
         cursor.execute(df)
     insert_into()
