@@ -16,7 +16,8 @@ create table alkemy (
 	codigo_tel varchar(255),
 	teléfono varchar(255),
 	mail varchar(255),
-	web varchar(255)
+	web varchar(255),
+	fuente varchar(255)
 );
 
 ALTER TABLE alkemy ADD COLUMN created_at TIMESTAMP DEFAULT NOW();

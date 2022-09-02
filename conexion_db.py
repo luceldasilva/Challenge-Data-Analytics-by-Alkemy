@@ -15,9 +15,9 @@ logging.basicConfig(
     )
 
 def insert_into():
-    sql = '''INSERT INTO alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, codigo_tel, teléfono, mail, web)
+    sql = '''INSERT INTO alkemy (cod_localidad, id_provincia, id_departamento, categoría, provincia, localidad, nombre, domicilio, código_postal, codigo_tel, teléfono, mail, web, fuente)
             VALUES 
-                (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
+                (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
     CURRENT_DIR = pyprojroot.here('data')
     files = Path(str(CURRENT_DIR)).glob("**/*.csv")
     for f in files:
@@ -43,10 +43,15 @@ def insert_into():
                                     data.columns[11]: 'codigo_tel',
                                     data.columns[12]: 'teléfono',
                                     data.columns[13]: 'mail',
-                                    data.columns[14]: 'web'})
+                                    data.columns[14]: 'web',
+                                    data.columns[15]: 'este',
+                                    data.columns[16]: 'fue',
+                                    data.columns[17]: 'un',
+                                    data.columns[18]: 'comodin',
+                                    data.columns[19]: 'fuente',})
         data = data.replace(['s/d'], np.nan)
-        data = data.drop(['ojo', 'piso'], axis=1)
-        data = data.iloc[:, :13]
+        data = data.drop(['ojo', 'piso', 'este', 'fue', 'un', 'comodin'], axis=1)
+        data = data.iloc[:, :14]
         list_data = data.values.tolist()
         cursor.executemany(sql, list_data)
         connection.commit()
