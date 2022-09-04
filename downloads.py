@@ -22,22 +22,23 @@ logging.basicConfig(
 
 
 def create_data():
-    if isdir('data') == False:
+    if not isdir('data'):
+        logging.info('No existe la carpeta ./data/')
         os.mkdir('data')
-        logging.info('carpeta creada')
+        logging.info('Carpeta creada')
     else:
-        logging.info('carpeta disponible')
+        logging.info('La carpeta está disponible')
 
 
 def downloads(file_link, art_venue):
     logging.info(f'Descargando {art_venue}')
-    CURRENT_DIR = pyprojroot.here('data')
-    os.chdir(str(CURRENT_DIR))
+    data_dir = pyprojroot.here('data')
+    os.chdir(str(data_dir))
     with req.get(str(file_link)) as rq:
-        if isdir(str(art_venue)) == True:
+        if isdir(str(art_venue)):
             rmtree(str(art_venue))
-        os.makedirs(os.path.join(CURRENT_DIR, str(art_venue), str(mes)))
-        os.chdir(os.path.join(CURRENT_DIR, str(art_venue), str(mes)))
+        os.makedirs(os.path.join(data_dir, str(art_venue), str(mes)))
+        os.chdir(os.path.join(data_dir, str(art_venue), str(mes)))
         with open(f'{str(art_venue)}-{str(today)}.csv', 'wb') as file:
             file.write(rq.content)
             logging.info(f'categoría {art_venue} descargada')
