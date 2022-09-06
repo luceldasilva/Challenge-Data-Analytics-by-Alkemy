@@ -2,5 +2,5 @@ data/
 venv/
 .venv
 .env
-.log
+*.log
 memorandum.txt

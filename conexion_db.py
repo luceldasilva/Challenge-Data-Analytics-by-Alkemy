@@ -34,19 +34,30 @@ def manipulation_sql():
         for f in files:
             logging.info(f)
             data = pd.read_csv(f,header = 0, sep = ',')
-            if 'Departamento' in data.columns:
-                data = data.drop(['Departamento'], axis=1)
+            # Manipulando datos
+            logging.info('Manipulando datos y borrando columnas que no usaré')
+            if 'Observacion' in data.columns:
+                data = data.drop(['Observacion'], axis=1)
+            if 'Observaciones' in data.columns:
+                data = data.drop(['Observaciones'], axis=1)
+            if 'departamento' in data.columns:
+                data = data.drop(['departamento'], axis=1)
             if 'Subcategoria' in data.columns:
                 data = data.drop(['Subcategoria'], axis=1)
             if 'subcategoria' in data.columns:
                 data = data.drop(['subcategoria'], axis=1)
-            data = data.rename(columns={data.columns[0]: 'cod_localidad', data.columns[1]: 'id_provincia', data.columns[2]: 'id_departamento', data.columns[3]: 'ojo', data.columns[4]: 'categoría',
-                                        data.columns[5]: 'provincia', data.columns[6]: 'localidad', data.columns[7]: 'nombre', data.columns[8]: 'domicilio', data.columns[9]: 'estas_filas',
-                                        data.columns[10]: 'código_postal', data.columns[11]: 'codigo_tel', data.columns[12]: 'teléfono', data.columns[13]: 'mail', data.columns[14]: 'web',
-                                        data.columns[15]: 'las_voy', data.columns[16]: 'a_borrar', data.columns[17]: 'porque_no', data.columns[18]: 'las_usaré', data.columns[19]: 'fuente',}
+            if 'Departamento' in data.columns:
+                data = data.drop(['Departamento'], axis=1) 
+            data = data.rename(columns={data.columns[0]: 'cod_localidad', data.columns[1]: 'id_provincia', data.columns[2]: 'id_departamento', 
+                                        data.columns[3]: 'categoría', data.columns[4]: 'provincia', data.columns[5]: 'localidad',
+                                        data.columns[6]: 'nombre', data.columns[7]: 'domicilio', data.columns[8]: 'estas_filas',
+                                        data.columns[9]: 'código_postal', data.columns[10]: 'codigo_tel', data.columns[11]: 'teléfono',
+                                        data.columns[12]: 'mail', data.columns[13]: 'web', data.columns[14]: 'las_voy',
+                                        data.columns[15]: 'a_borrar', data.columns[16]: 'porque_no', data.columns[17]: 'las_usaré', data.columns[18]: 'fuente',}
                                         )
             # Limpiando datos
             logging.info('Limpiando datos y ordenando')
+            data.fuente = data.fuente.replace([np.nan], ['Sin fuente'])
             data = data.replace(['s/d'], np.nan)
             data = data.replace(['Gobierno de la provincia'], ['Gobierno de la Provincia'])
             data = data.replace(['Gob. Pcia.'], ['Gobierno de la Provincia'])
@@ -55,8 +66,9 @@ def manipulation_sql():
             data = data.replace(['Tierra del Fuego, Antártida e Islas del Atlántico Sur'], ['Tierra del Fuego'])
             data = data.replace(['Ciudad Autónoma de Buenos Aires'], ['Capital Federal'])
             data = data.replace(['Espacios de Exhibición Patrimonial'], ['Museos'])
-            data = data.drop(['ojo', 'estas_filas', 'las_voy', 'a_borrar', 'porque_no', 'las_usaré'], axis=1)
+            data = data.drop(['estas_filas', 'las_voy', 'a_borrar', 'porque_no', 'las_usaré'], axis=1)
             data.provincia = data.provincia.str.strip() # Había espacios en blanco surtidos
+            data.categoría = data.categoría.str.strip()
             data = data.iloc[:, :14]
             logging.info('Hacer insert into * from alkemy')
             list_data = data.values.tolist()
@@ -72,7 +84,7 @@ def manipulation_sql():
             fly = 0    
             butter = [str(cat_count_df), str(fuente_count_df), str(province_df)]
             print(".·-=-·." * 11)
-            while fly < 3:
+            while fly < len(butter):
                 print(butter[fly]) #juego de palabras
                 print(".·-=-·." * 11)
                 fly += 1 
