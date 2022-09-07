@@ -22,8 +22,11 @@ logging.basicConfig(
 
 
 def create_data():
+    """
+    Crear carpeta raíz del proyecto
+    """
     if not isdir('data'):
-        logging.info('No existe la carpeta ./data/')
+        logging.error('No existe la carpeta ./data/')
         os.mkdir('data')
         logging.info('Carpeta creada')
     else:
@@ -31,6 +34,9 @@ def create_data():
 
 
 def downloads(file_link, art_venue):
+    """
+    Descargar los archivos fuentes
+    """
     logging.info(f'Descargando {art_venue}')
     data_dir = pyprojroot.here('data')
     os.chdir(str(data_dir))

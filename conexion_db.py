@@ -15,6 +15,9 @@ logging.basicConfig(
     )
 
 def manipulation_sql():
+    """
+    Es para manipular los datos descargados, alzarlos a una tabla sql y mostrar resultados en consola
+    """
     try:
         pg_engine = ce(config('engine_psql'))
         logging.info("Conexión exitosa.")
@@ -57,7 +60,6 @@ def manipulation_sql():
                                         )
             # Limpiando datos
             logging.info('Limpiando datos y ordenando')
-            data.fuente = data.fuente.replace([np.nan], ['Sin fuente'])
             data = data.replace(['s/d'], np.nan)
             data = data.replace(['Gobierno de la provincia'], ['Gobierno de la Provincia'])
             data = data.replace(['Gob. Pcia.'], ['Gobierno de la Provincia'])
@@ -75,26 +77,30 @@ def manipulation_sql():
             cursor.executemany(sql, list_data)
             connection.commit()
             logging.info('archivo agregado a la tabla')
+
+    except Exception as ex:
+        logging.error("Error durante la conexión: {}".format(ex))
+
+    else:
         logging.info('Preparando tabla alkemy para consultas')
         df = pd.read_sql_table("alkemy", pg_engine)
         cat_count_df = df.groupby(['categoría'])['categoría'].count() 
         fuente_count_df = df.groupby(['fuente'])['fuente'].count().sort_values(ascending=0)
         province_df = df.groupby(['provincia','categoría']).size().reset_index(name='total').sort_values('provincia', ascending=1)
-        with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.precision', 3,):
-            fly = 0    
+        logging.info('Imprimir dataframes')
+        with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.precision', 3):
+            show_table = 0    
             butter = [str(cat_count_df), str(fuente_count_df), str(province_df)]
             print(".·-=-·." * 11)
-            while fly < len(butter):
-                print(butter[fly]) #juego de palabras
+            while show_table < len(butter):
+                print(butter[show_table]) #juego de palabras
                 print(".·-=-·." * 11)
-                fly += 1 
-
-    except Exception as ex:
-        logging.error("Error durante la conexión: {}".format(ex))
+                show_table += 1 
 
     finally:
         pg_engine.dispose()
         logging.info("La conexión ha finalizado.")
+
     
 def run():
     manipulation_sql()
