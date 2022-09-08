@@ -31,9 +31,10 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 ## Proceso de Instalación ⚙️
 ![](https://thumbs.gfycat.com/UglyEminentEidolonhelvum-size_restricted.gif)
 
-1. Clonar repositorio
+1. Clonar repositorio y entrar a la carpeta del proyecto
 ``` bash
-git clone https://github.com/luceldasilva/cookiecutter-personal.git
+git clone https://github.com/luceldasilva/Challenge-Data-Analytics-by-Alkemy.git
+cd Challenge-Data-Analytics-by-Alkemy
 ```
 también se puede [descargar como archivo.zip aquí](https://github.com/luceldasilva/cookiecutter-personal/archive/refs/heads/main.zip "descargar en archivo.zip aquí") y descomprimirlo.
 
