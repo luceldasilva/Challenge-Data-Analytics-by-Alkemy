@@ -7,7 +7,7 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 
 ## Estructura del Proyecto 📦
 
-    ├── data           <- Carpeta raíz que almacene las descargas.
+    ├── data               <- Carpeta raíz que almacene las descargas.
 	│   ├── biblioteca
 	│   │    ├── Mes de descarga
 	│   │         └── biblioteca-día-de-la-descarga.csv
@@ -20,7 +20,7 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 	│
 	├── venv               <- Carpeta del ambiente virtual
     ├── .env               <- Archivo para la conexión de base de datos y descargas.
-	├── .gitignore     <- Ignorar carpetas data que el programa creará y venv.
+	├── .gitignore         <- Ignorar carpetas data que el programa creará y venv.
 	├── alkemy.log         <- Archivo de registro que sucede en el código.
     ├── alkemy.py          <- La estrella del proyecto.
     ├── puntoenv.txt       <- Plantilla para crear el archivo .env
