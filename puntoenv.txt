@@ -1,0 +1,8 @@
+
+engine_psql = postgresql://postgres:3120@localhost:password/postgres
+
+cine_link = https://docs.google.com/spreadsheets/d/1geGUusqhedY_s_OzEw_Nk5XzmxPhLZScM_l6IWhkvLE/export?format=csv
+
+museo_link = https://docs.google.com/spreadsheets/d/1PS2_yAvNVEuSY0gI8Nky73TQMcx_G1i18lm--jOGfAA/export?format=csv
+
+biblioteca_link = https://docs.google.com/spreadsheets/d/1udwn61l_FZsFsEuU8CMVkvU2SpwPW3Krt1OML3cYMYk/export?format=csv

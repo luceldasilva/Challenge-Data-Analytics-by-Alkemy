@@ -1,0 +1,11 @@
+requests
+lxml
+autopep8
+python-dotenv
+python-decouple
+psycopg2
+sqlalchemy
+numpy
+pandas
+pyprojroot
+pyhere
