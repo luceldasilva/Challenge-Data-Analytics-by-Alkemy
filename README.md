@@ -9,11 +9,11 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 
     ├── data           <- Carpeta raíz que almacene las descargas.
 	│   ├── biblioteca
-	│       ├── Mes de descarga
-	│            └── biblioteca-día-de-la-descarga.csv
+	│   │    ├── Mes de descarga
+	│   │         └── biblioteca-día-de-la-descarga.csv
     │   ├── cine
-	│       ├── Mes de descarga
-	│            └── cine-día-de-la-descarga.csv
+	│   │    ├── Mes de descarga
+	│   │         └── cine-día-de-la-descarga.csv
     │   ├── museos
 	│       ├── Mes de descarga
 	│            └── museos-día-de-la-descarga.csv
