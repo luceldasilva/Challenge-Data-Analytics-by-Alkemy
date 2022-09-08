@@ -33,21 +33,18 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 
 1. Clonar repositorio y entrar a la carpeta del proyecto
 ``` bash
-git clone https://github.com/luceldasilva/Challenge-Data-Analytics-by-Alkemy.git
-cd Challenge-Data-Analytics-by-Alkemy
+git clone https://github.com/luceldasilva/Challenge-Data-Analytics-by-Alkemy.git && cd Challenge-Data-Analytics-by-Alkemy
 ```
 también se puede [descargar como archivo.zip aquí](https://github.com/luceldasilva/cookiecutter-personal/archive/refs/heads/main.zip "descargar en archivo.zip aquí") y descomprimirlo.
 
 2. Crear ambiente virtual para ejecutar el programa
 En Windows
 ``` bash
-py -m venv venv
-venv\Scripts\activate
+py -m venv venv && venv\Scripts\activate
 ```
 En Linux y Mac
 ``` bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv venv && source venv/bin/activate
 ```
 
 3. Instalar las librerías contenidas en requirements.txt
