@@ -18,8 +18,8 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 	│       ├── Mes de descarga
 	│            └── museos-día-de-la-descarga.csv
 	│
-	├── venv           <- Carpeta del ambiente virtual
-    ├── .env     <- Archivo para la conexión de base de datos y descargas.
+	├── venv               <- Carpeta del ambiente virtual
+    ├── .env               <- Archivo para la conexión de base de datos y descargas.
 	├── .gitignore     <- Ignorar carpetas data que el programa creará y venv.
 	├── alkemy.log         <- Archivo de registro que sucede en el código.
     ├── alkemy.py          <- La estrella del proyecto.
