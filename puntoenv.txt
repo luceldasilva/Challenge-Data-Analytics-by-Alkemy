@@ -1,5 +1,5 @@
 
-engine_psql = postgresql://postgres:3120@localhost:password/postgres
+engine_psql = postgresql://postgres:password@localhost:5432/postgres
 
 cine_link = https://docs.google.com/spreadsheets/d/1geGUusqhedY_s_OzEw_Nk5XzmxPhLZScM_l6IWhkvLE/export?format=csv
 
