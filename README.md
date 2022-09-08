@@ -52,7 +52,7 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Crear archivo .env copiando del archivo puntoenv.txt
+4. Crear archivo .env copiando todo su contenido del archivo puntoenv.txt
 > Reemplazar por el password correspondiente de su usuario
 ![Imgur](https://i.imgur.com/SW4BOzY.png)
 
