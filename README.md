@@ -21,12 +21,12 @@ Crear un proyecto que consuma datos desde 3 fuentes distintas para tener una bas
 	├── venv           <- Carpeta del ambiente virtual
     ├── .env     <- Archivo para la conexión de base de datos y descargas.
 	├── .gitignore     <- Ignorar carpetas data que el programa creará y venv.
-	├── alkemy.log             <- Archivo de registro que sucede en el código.
-    ├── alkemy.py             <- La estrella del proyecto.
-    ├── puntoenv.txt          <- Plantilla para crear el archivo .env
+	├── alkemy.log         <- Archivo de registro que sucede en el código.
+    ├── alkemy.py          <- La estrella del proyecto.
+    ├── puntoenv.txt       <- Plantilla para crear el archivo .env
 	├── README.md          <- La guía del proyecto.
-    ├── requirements.txt            <- Librerías del proyecto
-    ├── table_create.sql   <- Tabla inicial para manipular los datos en sql
+    ├── requirements.txt   <- Librerías del proyecto.
+    ├── table_create.sql   <- Tabla inicial para manipular los datos en sql.
 
 ## Proceso de Instalación ⚙️
 ![](https://thumbs.gfycat.com/UglyEminentEidolonhelvum-size_restricted.gif)
