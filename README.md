@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 4. Crear archivo .env copiando del archivo puntoenv.txt
 > Reemplazar por el password correspondiente de su usuario
-![Imgur](https://i.imgur.com/4jExZDY.png)
+![Imgur](https://i.imgur.com/SW4BOzY.png)
 
 Todo Listo ya se podrá ejecutar el alkemy.py en tu directorio
 En Windows
